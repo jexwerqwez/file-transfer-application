@@ -1,4 +1,4 @@
-name: Deploy Doxygen to GitHub Pages
+name: Deploy Doxygen Documentation to GitHub Pages
 
 on:
   push:
@@ -6,15 +6,17 @@ on:
       - main
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Install Doxygen
+        run: sudo apt-get install doxygen
 
       - name: Generate Doxygen Documentation
         run: |
-          sudo apt-get install doxygen
           doxygen Doxyfile
 
       - name: Deploy to GitHub Pages

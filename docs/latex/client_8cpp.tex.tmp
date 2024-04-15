@@ -1,0 +1,150 @@
+\hypertarget{client_8cpp}{}\doxysection{client.\+cpp File Reference}
+\label{client_8cpp}\index{client.cpp@{client.cpp}}
+
+
+Клиентская часть для работы с файловым сервером.  
+
+
+{\ttfamily \#include $<$arpa/inet.\+h$>$}\newline
+{\ttfamily \#include $<$netinet/in.\+h$>$}\newline
+{\ttfamily \#include $<$sys/socket.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$cstdio$>$}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+Include dependency graph for client.\+cpp\+:
+% FIG 0
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structClientConfig}{Client\+Config}}
+\begin{DoxyCompactList}\small\item\em Структура для хранения конфигурации клиента. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{client_8cpp_a6b20d41d6252e9871430c242cb1a56e7}{BUFFER\+\_\+\+SIZE}}~4096
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structClientConfig}{Client\+Config}} \mbox{\hyperlink{client_8cpp_a682974f6889281750aac3d4bb8f2e27c}{read\+Client\+Config}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Читает конфигурацию клиента из файла. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{client_8cpp_a7532b524f2ae565f21c1c9448a5bf4a7}{get\+And\+Process\+File\+Size}} (int sock, \mbox{\hyperlink{structClientConfig}{Client\+Config}} \&config)
+\begin{DoxyCompactList}\small\item\em Инициирует запрос на получение размера файла. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{client_8cpp_a9b6bd9f6c80d7b7df46d4ccfd965c64f}{receive\+File\+Data}} (int sock, const std\+::string \&file\+Path)
+\begin{DoxyCompactList}\small\item\em Получает данные файла от сервера и записывает их в файл. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{client_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em Главная функция клиента для передачи файлов. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Клиентская часть для работы с файловым сервером. 
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{client_8cpp_a6b20d41d6252e9871430c242cb1a56e7}\label{client_8cpp_a6b20d41d6252e9871430c242cb1a56e7}} 
+\index{client.cpp@{client.cpp}!BUFFER\_SIZE@{BUFFER\_SIZE}}
+\index{BUFFER\_SIZE@{BUFFER\_SIZE}!client.cpp@{client.cpp}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE}{BUFFER\_SIZE}}
+{\footnotesize\ttfamily \#define BUFFER\+\_\+\+SIZE~4096}
+
+
+
+Definition at line 17 of file client.\+cpp.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{client_8cpp_a7532b524f2ae565f21c1c9448a5bf4a7}\label{client_8cpp_a7532b524f2ae565f21c1c9448a5bf4a7}} 
+\index{client.cpp@{client.cpp}!getAndProcessFileSize@{getAndProcessFileSize}}
+\index{getAndProcessFileSize@{getAndProcessFileSize}!client.cpp@{client.cpp}}
+\doxysubsubsection{\texorpdfstring{getAndProcessFileSize()}{getAndProcessFileSize()}}
+{\footnotesize\ttfamily void get\+And\+Process\+File\+Size (\begin{DoxyParamCaption}\item[{int}]{sock,  }\item[{\mbox{\hyperlink{structClientConfig}{Client\+Config}} \&}]{config }\end{DoxyParamCaption})}
+
+
+
+Инициирует запрос на получение размера файла. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sock} & Дескриптор сокета. \\
+\hline
+{\em config} & Конфигурация клиента. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 176 of file client.\+cpp.
+
+\mbox{\Hypertarget{client_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{client_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{client.cpp@{client.cpp}!main@{main}}
+\index{main@{main}!client.cpp@{client.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Главная функция клиента для передачи файлов. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & Количество аргументов командной строки. \\
+\hline
+{\em argv} & Массив аргументов командной строки. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Код завершения программы. 
+\end{DoxyReturn}
+
+
+Definition at line 48 of file client.\+cpp.
+
+\mbox{\Hypertarget{client_8cpp_a682974f6889281750aac3d4bb8f2e27c}\label{client_8cpp_a682974f6889281750aac3d4bb8f2e27c}} 
+\index{client.cpp@{client.cpp}!readClientConfig@{readClientConfig}}
+\index{readClientConfig@{readClientConfig}!client.cpp@{client.cpp}}
+\doxysubsubsection{\texorpdfstring{readClientConfig()}{readClientConfig()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structClientConfig}{Client\+Config}} read\+Client\+Config (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Читает конфигурацию клиента из файла. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Имя файла конфигурации. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Структура конфигурации клиента. 
+\end{DoxyReturn}
+
+
+Definition at line 136 of file client.\+cpp.
+
+\mbox{\Hypertarget{client_8cpp_a9b6bd9f6c80d7b7df46d4ccfd965c64f}\label{client_8cpp_a9b6bd9f6c80d7b7df46d4ccfd965c64f}} 
+\index{client.cpp@{client.cpp}!receiveFileData@{receiveFileData}}
+\index{receiveFileData@{receiveFileData}!client.cpp@{client.cpp}}
+\doxysubsubsection{\texorpdfstring{receiveFileData()}{receiveFileData()}}
+{\footnotesize\ttfamily void receive\+File\+Data (\begin{DoxyParamCaption}\item[{int}]{sock,  }\item[{const std\+::string \&}]{file\+Path }\end{DoxyParamCaption})}
+
+
+
+Получает данные файла от сервера и записывает их в файл. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sock} & Дескриптор сокета. \\
+\hline
+{\em file\+Path} & Путь к файлу для сохранения данных. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 190 of file client.\+cpp.
+

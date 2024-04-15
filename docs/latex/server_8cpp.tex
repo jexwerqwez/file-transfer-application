@@ -1,0 +1,250 @@
+\hypertarget{server_8cpp}{}\doxysection{server.\+cpp File Reference}
+\label{server_8cpp}\index{server.cpp@{server.cpp}}
+
+
+Описание серверной части приложения для обработки файловых запросов.  
+
+
+{\ttfamily \#include $<$arpa/inet.\+h$>$}\newline
+{\ttfamily \#include $<$netinet/in.\+h$>$}\newline
+{\ttfamily \#include $<$sys/socket.\+h$>$}\newline
+{\ttfamily \#include $<$sys/stat.\+h$>$}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$iomanip$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+Include dependency graph for server.\+cpp\+:
+% FIG 0
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structServerConfig}{Server\+Config}}
+\begin{DoxyCompactList}\small\item\em Структура для хранения конфигурации сервера. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structServerConfig}{Server\+Config}} \mbox{\hyperlink{server_8cpp_aaeaf0b654bbac4b85b52fc7a32d2d1f7}{read\+Server\+Config}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Читает конфигурацию сервера из файла. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{server_8cpp_a6f37fe38a63c21f697f11766f1391f02}{check\+Directory}} (\mbox{\hyperlink{structServerConfig}{Server\+Config}} \&config)
+\begin{DoxyCompactList}\small\item\em Проверяет и создает директорию, если она не существует. \end{DoxyCompactList}\item 
+std\+::fstream \mbox{\hyperlink{server_8cpp_a1cec9048bc4568c20d4eede6ff897949}{check\+File\+Existance}} (\mbox{\hyperlink{structServerConfig}{Server\+Config}} \&config, int client\+\_\+id, int new\+\_\+socket)
+\begin{DoxyCompactList}\small\item\em Проверяет наличие файла клиента и создает его, если не существует. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{server_8cpp_a715347179b276a798ac4ac68acdfcfae}{check\+File\+Status}} (std\+::fstream \&file, int new\+\_\+socket, int client\+\_\+id, \mbox{\hyperlink{structServerConfig}{Server\+Config}} \&config)
+\begin{DoxyCompactList}\small\item\em Проверяет статус файла на сервере и обновляет файл прогресса клиента. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{server_8cpp_af8c2b49d5206d80f2b001263350660dc}{read\+Client\+File}} (std\+::fstream \&file, const std\+::string \&file\+Name)
+\begin{DoxyCompactList}\small\item\em Читает значение размера файла из файла прогресса. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{server_8cpp_a1185fe38c30d6a9d36f22d7a1c9a3bbf}{send\+File\+Data}} (\mbox{\hyperlink{structServerConfig}{Server\+Config}} \&config, int client\+\_\+id, int new\+\_\+socket, const std\+::string \&file\+\_\+name, size\+\_\+t start\+Pos)
+\begin{DoxyCompactList}\small\item\em Отправляет данные файла клиенту, начиная с указанной позиции. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{server_8cpp_abd6261d39055a0936fdedf2b2c1f4660}{update\+Progress\+File}} (const std\+::string \&progress\+File\+Path, const std\+::string \&file\+Name, size\+\_\+t sent\+Bytes)
+\begin{DoxyCompactList}\small\item\em Обновляет файл прогресса, записывая текущее состояние передачи файлов. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{server_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em Главная функция сервера. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Описание серверной части приложения для обработки файловых запросов. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{server_8cpp_a6f37fe38a63c21f697f11766f1391f02}\label{server_8cpp_a6f37fe38a63c21f697f11766f1391f02}} 
+\index{server.cpp@{server.cpp}!checkDirectory@{checkDirectory}}
+\index{checkDirectory@{checkDirectory}!server.cpp@{server.cpp}}
+\doxysubsubsection{\texorpdfstring{checkDirectory()}{checkDirectory()}}
+{\footnotesize\ttfamily void check\+Directory (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structServerConfig}{Server\+Config}} \&}]{config }\end{DoxyParamCaption})}
+
+
+
+Проверяет и создает директорию, если она не существует. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em config} & Конфигурация сервера. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 164 of file server.\+cpp.
+
+\mbox{\Hypertarget{server_8cpp_a1cec9048bc4568c20d4eede6ff897949}\label{server_8cpp_a1cec9048bc4568c20d4eede6ff897949}} 
+\index{server.cpp@{server.cpp}!checkFileExistance@{checkFileExistance}}
+\index{checkFileExistance@{checkFileExistance}!server.cpp@{server.cpp}}
+\doxysubsubsection{\texorpdfstring{checkFileExistance()}{checkFileExistance()}}
+{\footnotesize\ttfamily std\+::fstream check\+File\+Existance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structServerConfig}{Server\+Config}} \&}]{config,  }\item[{int}]{client\+\_\+id,  }\item[{int}]{new\+\_\+socket }\end{DoxyParamCaption})}
+
+
+
+Проверяет наличие файла клиента и создает его, если не существует. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em config} & Конфигурация сервера. \\
+\hline
+{\em client\+\_\+id} & Идентификатор клиента. \\
+\hline
+{\em new\+\_\+socket} & Дескриптор сокета нового клиента. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Открытый файловый поток. 
+\end{DoxyReturn}
+
+
+Definition at line 182 of file server.\+cpp.
+
+\mbox{\Hypertarget{server_8cpp_a715347179b276a798ac4ac68acdfcfae}\label{server_8cpp_a715347179b276a798ac4ac68acdfcfae}} 
+\index{server.cpp@{server.cpp}!checkFileStatus@{checkFileStatus}}
+\index{checkFileStatus@{checkFileStatus}!server.cpp@{server.cpp}}
+\doxysubsubsection{\texorpdfstring{checkFileStatus()}{checkFileStatus()}}
+{\footnotesize\ttfamily std\+::string check\+File\+Status (\begin{DoxyParamCaption}\item[{std\+::fstream \&}]{file,  }\item[{int}]{new\+\_\+socket,  }\item[{int}]{client\+\_\+id,  }\item[{\mbox{\hyperlink{structServerConfig}{Server\+Config}} \&}]{config }\end{DoxyParamCaption})}
+
+
+
+Проверяет статус файла на сервере и обновляет файл прогресса клиента. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & Открытый файловый поток для файла прогресса. \\
+\hline
+{\em new\+\_\+socket} & Сокет для общения с клиентом. \\
+\hline
+{\em client\+\_\+id} & Идентификатор клиента. \\
+\hline
+{\em config} & Конфигурация сервера. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Имя файла, полученное от клиента. 
+\end{DoxyReturn}
+
+
+Definition at line 248 of file server.\+cpp.
+
+\mbox{\Hypertarget{server_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{server_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{server.cpp@{server.cpp}!main@{main}}
+\index{main@{main}!server.cpp@{server.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Главная функция сервера. 
+
+Инициализирует сервер, обрабатывает подключения клиентов и управляет передачей данных.
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & Количество аргументов командной строки. \\
+\hline
+{\em argv} & Массив аргументов командной строки. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Код завершения программы. 
+\end{DoxyReturn}
+
+
+Definition at line 60 of file server.\+cpp.
+
+\mbox{\Hypertarget{server_8cpp_af8c2b49d5206d80f2b001263350660dc}\label{server_8cpp_af8c2b49d5206d80f2b001263350660dc}} 
+\index{server.cpp@{server.cpp}!readClientFile@{readClientFile}}
+\index{readClientFile@{readClientFile}!server.cpp@{server.cpp}}
+\doxysubsubsection{\texorpdfstring{readClientFile()}{readClientFile()}}
+{\footnotesize\ttfamily float read\+Client\+File (\begin{DoxyParamCaption}\item[{std\+::fstream \&}]{file,  }\item[{const std\+::string \&}]{file\+Name }\end{DoxyParamCaption})}
+
+
+
+Читает значение размера файла из файла прогресса. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & Открытый файловый поток для файла прогресса. \\
+\hline
+{\em file\+Name} & Имя файла, для которого необходимо прочитать прогресс. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Размер файла в байтах, если найден; -\/1, если запись отсутствует. 
+\end{DoxyReturn}
+
+
+Definition at line 218 of file server.\+cpp.
+
+\mbox{\Hypertarget{server_8cpp_aaeaf0b654bbac4b85b52fc7a32d2d1f7}\label{server_8cpp_aaeaf0b654bbac4b85b52fc7a32d2d1f7}} 
+\index{server.cpp@{server.cpp}!readServerConfig@{readServerConfig}}
+\index{readServerConfig@{readServerConfig}!server.cpp@{server.cpp}}
+\doxysubsubsection{\texorpdfstring{readServerConfig()}{readServerConfig()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structServerConfig}{Server\+Config}} read\+Server\+Config (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Читает конфигурацию сервера из файла. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Путь к файлу конфигурации. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Структура с настройками сервера. 
+\end{DoxyReturn}
+
+
+Definition at line 294 of file server.\+cpp.
+
+\mbox{\Hypertarget{server_8cpp_a1185fe38c30d6a9d36f22d7a1c9a3bbf}\label{server_8cpp_a1185fe38c30d6a9d36f22d7a1c9a3bbf}} 
+\index{server.cpp@{server.cpp}!sendFileData@{sendFileData}}
+\index{sendFileData@{sendFileData}!server.cpp@{server.cpp}}
+\doxysubsubsection{\texorpdfstring{sendFileData()}{sendFileData()}}
+{\footnotesize\ttfamily void send\+File\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structServerConfig}{Server\+Config}} \&}]{config,  }\item[{int}]{client\+\_\+id,  }\item[{int}]{new\+\_\+socket,  }\item[{const std\+::string \&}]{file\+\_\+name,  }\item[{size\+\_\+t}]{start\+Pos }\end{DoxyParamCaption})}
+
+
+
+Отправляет данные файла клиенту, начиная с указанной позиции. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em config} & Конфигурация сервера. \\
+\hline
+{\em client\+\_\+id} & Идентификатор клиента. \\
+\hline
+{\em new\+\_\+socket} & Сокет для отправки данных. \\
+\hline
+{\em file\+\_\+name} & Имя файла, данные которого отправляются. \\
+\hline
+{\em start\+Pos} & Позиция в файле, с которой начинается отправка данных. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 332 of file server.\+cpp.
+
+\mbox{\Hypertarget{server_8cpp_abd6261d39055a0936fdedf2b2c1f4660}\label{server_8cpp_abd6261d39055a0936fdedf2b2c1f4660}} 
+\index{server.cpp@{server.cpp}!updateProgressFile@{updateProgressFile}}
+\index{updateProgressFile@{updateProgressFile}!server.cpp@{server.cpp}}
+\doxysubsubsection{\texorpdfstring{updateProgressFile()}{updateProgressFile()}}
+{\footnotesize\ttfamily void update\+Progress\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{progress\+File\+Path,  }\item[{const std\+::string \&}]{file\+Name,  }\item[{size\+\_\+t}]{sent\+Bytes }\end{DoxyParamCaption})}
+
+
+
+Обновляет файл прогресса, записывая текущее состояние передачи файлов. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em progress\+File\+Path} & Путь к файлу прогресса. \\
+\hline
+{\em file\+Name} & Имя файла. \\
+\hline
+{\em sent\+Bytes} & Количество отправленных байт. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 381 of file server.\+cpp.
+
